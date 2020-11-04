@@ -25,7 +25,7 @@
               </nav>
             <div class="row">
                 @if ($error)
-                    <h2>{{$error}}</h2>
+                    <div class="alert alert-danger">{{$error}}</div>
                 @else
                 
                 @foreach($news as $b)
@@ -38,7 +38,7 @@
                     <h5 class="card-title">{{$b->title}}</h5>
                     <p class="card-text">{{$b->description}}</p>
                 </div>
-                <a href="{{$b->link}}" style="display: none;" class="pl-4 btn btn-primary btnread-{{$b->id}} hidebtn">Read more</a>
+                <a href="{{$b->link}}" style="display: none;" class="pl-4 btn2 btn btn-primary btnread-{{$b->id}} hidebtn">Read more</a>
                 </div>
                 </div>
                 @endforeach
@@ -54,4 +54,5 @@
             $(element[i]).toggle();
         }
     }
+
 </script>

@@ -14,7 +14,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $url = "http://feeds.skynews.com/feeds/rss/uk.xml";
+        $error = "";
+        $url = "http://feeds.skynews.com/feeds/rss/uk.xl";
        try{
         $xml = simplexml_load_file($url);
         
@@ -27,7 +28,7 @@ class NewsController extends Controller
                                   ]);
         }
     }catch(\Exception $e){
-        $error = "URL is invalide";
+        $error = $e->getMessage()."at line ".$e->getLine();
     }
         $news  = news::all();
         return view('news',['news'=>$news,'error'=>$error]);

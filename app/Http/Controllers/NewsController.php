@@ -14,7 +14,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $url = "http://feeds.skynews.com/feeds/rss/uk.xm";
+        $url = "http://feeds.skynews.com/feeds/rss/uk.xml";
        try{
         $xml = simplexml_load_file($url);
         

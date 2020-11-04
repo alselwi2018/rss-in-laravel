@@ -24,6 +24,10 @@
                 
               </nav>
             <div class="row">
+                @if ($error)
+                    <h2>{{$error}}</h2>
+                @else
+                
                 @foreach($news as $b)
                 <div class="col-sm-6 pb-3">
                 <div class="card" >
@@ -38,6 +42,7 @@
                 </div>
                 </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </body>

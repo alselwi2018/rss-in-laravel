@@ -14,8 +14,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $url = "http://feeds.skynews.com/feeds/rss/uk.xml";
+        $url = "http://feeds.skynews.com/feeds/rss/uk.xm";
+       try{
         $xml = simplexml_load_file($url);
+        
         for($i = 0; $i <= $xml->channel->item->count(); $i++){
             news::updateOrCreate(['title' => !empty($xml->channel->item[$i]->title)?$xml->channel->item[$i]->title:"",
                                   'link' => !empty($xml->channel->item[$i]->link)?$xml->channel->item[$i]->link:"",
@@ -24,8 +26,11 @@ class NewsController extends Controller
                                   'media' => !empty($xml->channel->item[$i]->enclosure['url'])?$xml->channel->item[$i]->enclosure['url']:""
                                   ]);
         }
+    }catch(\Exception $e){
+        $error = "URL is invalide";
+    }
         $news  = news::all();
-        return view('news',['news'=>$news]);
+        return view('news',['news'=>$news,'error'=>$error]);
     }
 
     /**

@@ -30,7 +30,7 @@ class NewsController extends Controller
     }catch(\Exception $e){
         $error = $e->getMessage()."at line ".$e->getLine();
     }
-        $news  = news::all();
+        $news  = news::orderBy('pubdate','desc')->get();
         return view('news',['news'=>$news,'error'=>$error]);
     }
 

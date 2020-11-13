@@ -31,8 +31,9 @@
                 @foreach($news as $b)
                 <div class="col-sm-6 pb-3">
                 <div class="card" >
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between">
                     <img src="{{$b->media}}" alt="" width="70" height="70">
+                    <small>{{ \Carbon\Carbon::parse($b->pubdate)->format('l, d M Y H:i')}}</small>
                     </div>
                     <div class="card-body" onclick="showBtn({{$b->id}})">
                     <h5 class="card-title">{{$b->title}}</h5>
